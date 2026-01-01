@@ -6,7 +6,7 @@
 /*   By: oalshbou <oalshbou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 21:52:45 by oalshbou          #+#    #+#             */
-/*   Updated: 2026/01/01 23:53:12 by oalshbou         ###   ########.fr       */
+/*   Updated: 2026/01/01 23:59:36 by oalshbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	sort_three(t_stack **stack_a)
 		ra(stack_a);
 	else if (f < s && s > t && f > t)
 	{
-		sa(stacck_a);
+		sa(stack_a);
 		ra(stack_a);
 	}
 	else if ( f < s && s > t && f > t)
@@ -103,7 +103,7 @@ void	big_sort_to_a(t_stack **a, t_stack **b)
 		if(pos <= size / 2)
 		{
 			while((*b)->index != max)
-				rp(b);
+				rb(b);
 		}
 		else
 		{
@@ -120,5 +120,5 @@ void	big_sort(t_stack **a, t_stack **b)
 
 	size = stack_size(*a);
 	big_sort_to_b(a, b, size);
-	big_sort_to-a(a,b);
+	big_sort_to_a(a,b);
 }

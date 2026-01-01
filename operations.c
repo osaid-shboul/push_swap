@@ -6,7 +6,7 @@
 /*   By: oalshbou <oalshbou@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:30:24 by oalshbou          #+#    #+#             */
-/*   Updated: 2026/01/01 21:40:58 by oalshbou         ###   ########.fr       */
+/*   Updated: 2026/01/02 00:23:50 by oalshbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void ra(t_stack **stack_a)
 	first->next = NULL;
 	write(1, "ra\n", 3);
 }
+
 void rra(t_stack **stack_a)
 {
 	t_stack *last;
@@ -81,3 +82,49 @@ void rra(t_stack **stack_a)
 	*stack_a = last;
 	write(1, "rra\n", 4);
 }
+
+void	pa(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	temp;
+
+	if(!*stack_b)
+		return;
+	temp = *stack_b;
+	*stack_b = (*stack)->next;
+	temp->next = *stack_a;
+	*stack_a = temp;
+	write(1, "pa\n", 3);
+}
+
+void	rb(stack **stack_b)
+{
+	t_stack	*f;
+	t_stack	*l;
+
+	if(!*stack_b || !(*stack_b)->next)
+		return;
+	f = *stack_b;
+	*stack_b = f->next;
+	l = *stack_b;
+	while(l->next != NULL)
+		l = l->next;
+	l->next = f;
+	f->next = NULL;
+	write(1, "rb\n", 3);
+}
+
+void	sb(t_stack **stack_b)
+{
+	t_stack	*f;
+	t_stack	*s;
+
+	if(!*stack_b || !(*stack_b)->next)
+		return;
+	f = *stack_b;
+	s = (*stack_b)->next;
+	f->next = s->next;
+	s->next = f;
+	*stack_b = s;
+	write(1, "sb\n", 3);
+}
+

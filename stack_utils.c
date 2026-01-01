@@ -6,7 +6,7 @@
 /*   By: oalshbou <oalshbou@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:19:00 by oalshbou          #+#    #+#             */
-/*   Updated: 2025/12/31 00:45:28 by oalshbou         ###   ########.fr       */
+/*   Updated: 2026/01/02 00:07:10 by oalshbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void free_stack(t_stack **stack)
 	}
 	*stack = NULL;
 }
+
 void assign_index(t_stack *stack_a, int stack_size)
 {
 	t_stack *p;
@@ -62,6 +63,7 @@ void assign_index(t_stack *stack_a, int stack_size)
 		p = p->next;
 	}
 }
+
 int	stack_size(t_stack *stack)
 {
 	int	count;
@@ -82,6 +84,7 @@ t_stack *find_lastn(t_stack *stack)
 		stack = stack->next;
 	return (stack);
 }
+
 void	add_last(t_stack **stack, t_stack *temp)
 {
 	t_stack *last;
@@ -93,4 +96,33 @@ void	add_last(t_stack **stack, t_stack *temp)
 	}
 	last = find_lastn(*stack);
 	last->next = temp;
+}
+
+int	get_max_index(t_stack *stack)
+{
+	int	max;
+
+	max = stack->index;
+	while(stack)
+	{
+		if(stack->index > max)
+			max = stack->index;
+		stack = stack->next;
+	}
+	return(max);
+}
+
+int	get_target_position(t_stack **stack, int target)
+{
+	int	pos;
+
+	pos = 0;
+	while(stack)
+	{
+		if(stack->index == target)
+			return(pos);
+		stack = stack->next;
+		pos++;
+	}
+	return(-1);
 }
