@@ -6,7 +6,7 @@
 /*   By: oalshbou <oalshbou@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 22:54:02 by oalshbou          #+#    #+#             */
-/*   Updated: 2025/12/30 23:39:13 by oalshbou         ###   ########.fr       */
+/*   Updated: 2026/01/01 21:47:06 by oalshbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@ int main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	a = NULL;
+	a = fill_stack(argc,argv);
+	if (!a)
+	{
+		write(2, "Error\n", 6);
+		return(1);
+	}
 	b = NULL;
-	size = size_stack(a);
+	size = stack_size(a);
 	assign_index(a, size);
 	if (size == 2)
 		sa(&a);

@@ -6,7 +6,7 @@
 /*   By: oalshbou <oalshbou@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:30:24 by oalshbou          #+#    #+#             */
-/*   Updated: 2025/12/30 23:39:11 by oalshbou         ###   ########.fr       */
+/*   Updated: 2026/01/01 21:40:58 by oalshbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ void sa(t_stack **stack_a)
 	write(1, "sa\n", 3);
 }
 
-void pb(t_stack **stack, t_stack **stack_a)
+void pb(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *temp;
 
-	if (!stack_a)
+	if (!*stack_a)
 		return;
 
 	temp = *stack_a;
 	*stack_a = (*stack_a)->next;
 
-	temp->next = *stack_a;
-	*stack_a = temp;
+	temp->next = *stack_b;
+	*stack_b = temp;
 
 	write(1, "pb\n", 3);
 }

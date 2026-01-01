@@ -6,7 +6,7 @@
 /*   By: oalshbou <oalshbou@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 16:09:48 by oalshbou          #+#    #+#             */
-/*   Updated: 2025/12/30 23:39:15 by oalshbou         ###   ########.fr       */
+/*   Updated: 2026/01/01 21:42:14 by oalshbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ long ft_atoi_check(const char *str, int *e)
 	}
 	if (str[i] == '\0')
 	{
-		*e == 1;
+		*e = 1;
 		return (0);
 	}
 	while (str[i] != '\0')
