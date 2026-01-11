@@ -6,17 +6,17 @@
 /*   By: oalshbou <oalshbou@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 21:52:45 by oalshbou          #+#    #+#             */
-/*   Updated: 2026/01/03 13:10:26 by oalshbou         ###   ########.fr       */
+/*   Updated: 2026/01/10 23:54:39 by oalshbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_stack **stack_a)
+void sort_three(t_stack **stack_a)
 {
-	int	f;
-	int	s;
-	int	t;
+	int f;
+	int s;
+	int t;
 
 	f = (*stack_a)->index;
 	s = (*stack_a)->next->index;
@@ -39,32 +39,39 @@ void	sort_three(t_stack **stack_a)
 		rra(stack_a);
 }
 
-void	sort_five(t_stack **a, t_stack **b)
+void sort_five(t_stack **a, t_stack **b)
 {
-	int	size;
+	int min_index;
+	int pos;
+	int size;
 
-	size = stack_size(*a);
-	while (size > 3)
+	min_index = 0;
+	while (stack_size(*a) > 3)
 	{
-		if ((*a)->index == 0 || (*a)->index == 1)
+		pos = get_target_position(*a, min_index);
+		size = stack_size(*a);
+		if (pos <= size / 2)
 		{
-			pb(a, b);
-			size--;
+			while ((*a)->index != min_index)
+				ra(a);
 		}
 		else
-			ra(a);
+		{
+			while ((*a)->index != min_index)
+				rra(a);
+		}
+		pb(a, b);
+		min_index++;
 	}
 	sort_three(a);
-	if ((*b)->next && (*b)->index < (*b)->next->index)
-		sb(b);
-	pa(a, b);
-	pa(a, b);
+	while (*b)
+		pa(a, b);
 }
 
-void	big_sort_to_b(t_stack **a, t_stack **b, int size)
+void big_sort_to_b(t_stack **a, t_stack **b, int size)
 {
-	int	i;
-	int	range;
+	int i;
+	int range;
 
 	i = 0;
 	if (size <= 100)
@@ -89,11 +96,11 @@ void	big_sort_to_b(t_stack **a, t_stack **b, int size)
 	}
 }
 
-void	big_sort_to_a(t_stack **a, t_stack **b)
+void big_sort_to_a(t_stack **a, t_stack **b)
 {
-	int	max;
-	int	pos;
-	int	size;
+	int max;
+	int pos;
+	int size;
 
 	while (*b)
 	{
@@ -114,9 +121,9 @@ void	big_sort_to_a(t_stack **a, t_stack **b)
 	}
 }
 
-void	big_sort(t_stack **a, t_stack **b)
+void big_sort(t_stack **a, t_stack **b)
 {
-	int	size;
+	int size;
 
 	size = stack_size(*a);
 	big_sort_to_b(a, b, size);
