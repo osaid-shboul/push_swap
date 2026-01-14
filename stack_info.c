@@ -6,15 +6,15 @@
 /*   By: oalshbou <oalshbou@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 15:19:05 by oalshbou          #+#    #+#             */
-/*   Updated: 2026/01/03 15:19:49 by oalshbou         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:09:52 by oalshbou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_target_position(t_stack *stack, int target)
+int get_target_position(t_stack *stack, int target)
 {
-	int	pos;
+	int pos;
 
 	pos = 0;
 	while (stack)
@@ -27,9 +27,9 @@ int	get_target_position(t_stack *stack, int target)
 	return (-1);
 }
 
-int	get_max_index(t_stack *stack)
+int get_max_index(t_stack *stack)
 {
-	int	max;
+	int max;
 
 	max = stack->index;
 	while (stack)
@@ -40,12 +40,25 @@ int	get_max_index(t_stack *stack)
 	}
 	return (max);
 }
-
-void	assign_index(t_stack *stack_a)
+int get_min_index(t_stack *stack)
 {
-	t_stack	*p;
-	t_stack	*cp;
-	int		count;
+	int min;
+
+	min = stack->index;
+	while (stack)
+	{
+		if (stack->index < min)
+			min = stack->index;
+		stack = stack->next;
+	}
+	return (min);
+}
+
+void assign_index(t_stack *stack_a)
+{
+	t_stack *p;
+	t_stack *cp;
+	int count;
 
 	p = stack_a;
 	while (p != NULL)
@@ -63,13 +76,13 @@ void	assign_index(t_stack *stack_a)
 	}
 }
 
-void	free_stack(t_stack **stack)
+void free_stack(t_stack **stack)
 {
-	t_stack	*temp;
-	t_stack	*cur;
+	t_stack *temp;
+	t_stack *cur;
 
 	if (!stack || !*stack)
-		return ;
+		return;
 	cur = *stack;
 	while (cur)
 	{
